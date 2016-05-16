@@ -148,6 +148,7 @@ public abstract class Passenger {
 	 * @return the bookingTime
 	 */
 	public int getBookingTime() {
+		
 		return this.bookingTime;
 		
 	}
@@ -160,6 +161,8 @@ public abstract class Passenger {
 	 */
 	public int getConfirmationTime() {
 		
+		return this.confirmationTime;
+		
 	}
 
 	/**
@@ -168,6 +171,8 @@ public abstract class Passenger {
 	 * @return the departureTime
 	 */
 	public int getDepartureTime() {
+		
+		return this.departureTime;
 		
 	}
 	
@@ -178,6 +183,8 @@ public abstract class Passenger {
 	 */
 	public int getEnterQueueTime() {
 		
+		return this.enterQueueTime;
+		
 	}
 
 	/**
@@ -186,6 +193,8 @@ public abstract class Passenger {
 	 * @return the exitQueueTime
 	 */
 	public int getExitQueueTime() {
+		
+		return this.getExitQueueTime();
 		
 	}
 
@@ -196,6 +205,8 @@ public abstract class Passenger {
 	 */
 	public String getPassID() {
 		
+		return this.passID;
+		
 	}
 
 	/**
@@ -204,6 +215,15 @@ public abstract class Passenger {
 	 * @return <code>boolean</code> true if Confirmed state; false otherwise 
 	 */
 	public boolean isConfirmed() {
+		
+		if(this.confirmed)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 		
 	}
 		
