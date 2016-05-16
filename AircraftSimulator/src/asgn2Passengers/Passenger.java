@@ -148,6 +148,7 @@ public abstract class Passenger {
 	 * @return the bookingTime
 	 */
 	public int getBookingTime() {
+		return this.bookingTime;
 		
 	}
 
