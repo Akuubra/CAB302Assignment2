@@ -78,9 +78,9 @@ public abstract class Passenger {
 		this.passID = "" + Passenger.index; 
 		Passenger.index++; 
 		//Stuff here 
-		if((bookingTime < 0) || (departureTime <=0))
+		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
 		{
-			
+			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
 		}
 	}
 	
@@ -109,6 +109,9 @@ public abstract class Passenger {
 	 *         isFlown(this) OR (cancellationTime < 0) OR (departureTime < cancellationTime)
 	 */
 	public void cancelSeat(int cancellationTime) throws PassengerException {
+		
+		this.bookingTime = cancellationTime;
+		newState = true;
 
 	}
 
@@ -129,6 +132,35 @@ public abstract class Passenger {
 	 * 		   OR (confirmationTime < 0) OR (departureTime < confirmationTime)
 	 */
 	public void confirmSeat(int confirmationTime, int departureTime) throws PassengerException {
+		
+		if (this.isConfirmed())
+		{
+			throw new PassengerException("Passenger is already confirmed");
+		}
+		if (this.isRefused())
+		{
+			throw new PassengerException("Passenger is refused");
+		}
+		if (this.isFlown())
+		{
+			throw new PassengerException("Passenger is already flown");
+		}
+		if (confirmationTime < 0)
+		{
+			throw new PassengerException("Confirmations Time invalid");
+		}
+		if (departureTime < confirmationTime)
+		{
+			throw new PassengerException("Departure Time is invalid");
+		}
+		this.confirmed = true;
+		this.confirmationTime = confirmationTime;
+		this.departureTime = departureTime;
+		if(this.isQueued())
+		{
+			this.exitQueueTime = confirmationTime;
+		}
+		
 	
 	}
 
@@ -145,6 +177,26 @@ public abstract class Passenger {
 	 *         isFlown(this) OR (departureTime <= 0)
 	 */
 	public void flyPassenger(int departureTime) throws PassengerException {
+		
+		if (this.isRefused())
+		{
+			throw new PassengerException("Passenger is refused");
+		}
+		if (this.isQueued())
+		{
+			throw new PassengerException("Passenger is Queued");
+		}
+		if (this.isFlown())
+		{
+			throw new PassengerException("Passneger is already flown");
+		}
+		if (departureTime <= 0)
+		{
+			throw new PassengerException("Departure Time is invalid");
+		}
+		this.flown = true;
+		this.departureTime = departureTime;
+		
 		
 	}
 
@@ -327,6 +379,26 @@ public abstract class Passenger {
 	 */
 	public void queuePassenger(int queueTime, int departureTime) throws PassengerException {
 		
+		if (this.isRefused())
+		{
+			throw new PassengerException("Passenger is refused");
+		}
+		if (this.isQueued())
+		{
+			throw new PassengerException("Passenger is Queued");
+		}
+		if (this.isFlown())
+		{
+			throw new PassengerException("Passneger is already flown");
+		}
+		if (this.isConfirmed())
+		{
+			throw new PassengerException("Passneger is already confirmed");
+		}
+		if (departureTime <= 0)
+		{
+			throw new PassengerException("Departure Time is invalid");
+		}
 		
 		
 	}
@@ -346,6 +418,8 @@ public abstract class Passenger {
 	 * 			OR (refusalTime < 0) OR (refusalTime < bookingTime)
 	 */
 	public void refusePassenger(int refusalTime) throws PassengerException {
+		
+		
 		
 	}
 	
