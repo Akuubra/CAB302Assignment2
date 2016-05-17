@@ -72,10 +72,16 @@ public abstract class Passenger {
 	 * OR (departureTime < bookingTime) 
 	 */
 	public Passenger(int bookingTime, int departureTime) throws PassengerException  {
+		this.bookingTime = bookingTime;
+		this.departureTime = departureTime;
 		//Stuff here 
 		this.passID = "" + Passenger.index; 
 		Passenger.index++; 
 		//Stuff here 
+		if((bookingTime < 0) || (departureTime <=0))
+		{
+			
+		}
 	}
 	
 	/**
@@ -224,7 +230,6 @@ public abstract class Passenger {
 		{
 			return false;
 		}
-		
 	}
 		
 	/**
@@ -242,7 +247,6 @@ public abstract class Passenger {
 		{
 			return false;
 		}
-		
 	}
 	
 	/**
@@ -252,6 +256,14 @@ public abstract class Passenger {
 	 */
 	public boolean isNew() {
 		
+		if(this.newState)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**
@@ -261,6 +273,14 @@ public abstract class Passenger {
 	 */
 	public boolean isQueued() {
 		
+		if(this.inQueue)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}		
 	}
 	
 	/**
@@ -269,6 +289,15 @@ public abstract class Passenger {
 	 * @return <code>boolean</code> true if Refused state; false otherwise 
 	 */
 	public boolean isRefused() {
+		
+		if(this.refused)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 		
 	}
 	
@@ -297,6 +326,8 @@ public abstract class Passenger {
 	 *         isFlown(this) OR (queueTime < 0) OR (departureTime < queueTime)
 	 */
 	public void queuePassenger(int queueTime, int departureTime) throws PassengerException {
+		
+		
 		
 	}
 	
