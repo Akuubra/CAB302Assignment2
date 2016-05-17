@@ -234,6 +234,15 @@ public abstract class Passenger {
 	 */
 	public boolean isFlown() {
 		
+		if(this.flown)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 	
 	/**
