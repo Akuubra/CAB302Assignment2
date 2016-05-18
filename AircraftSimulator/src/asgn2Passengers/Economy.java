@@ -38,9 +38,9 @@ public class Economy extends Passenger {
 	@Override
 	public Passenger upgrade() {
 		
-		
+		return this;
 		//copyPassengerState(EconomyPassenger);
-		//return EconomyPassenger;
+		//Passenger EconomyPassenger  = new Economy(this.bookingTime, this.departureTime);
 
 	}
 }
