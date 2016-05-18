@@ -146,6 +146,8 @@ public abstract class Aircraft {
 	 * 
 	 * @return <code>Bookings</code> object containing the status.  
 	 */
+	//IMPORTANT FOR GUI
+	//GET OBJECT BOOKING
 	public Bookings getBookings() {
 		
 	}
@@ -253,6 +255,8 @@ public abstract class Aircraft {
 	 * @param p <code>Passenger</code> to be Confirmed
 	 * @return <code>boolean</code> true if seats in Class(p); false otherwise
 	 */
+	//GIVEN PASSENGER, INFER PASSENGER CLASS/TYPE
+	//IS IT ECONOMY, PREMIUM, BUSINESS OR FIRST BASED ON ??
 	public boolean seatsAvailable(Passenger p) {		
 		
 	}
