@@ -60,6 +60,16 @@ public abstract class Aircraft {
 	 * @throws AircraftException if isNull(flightCode) OR (departureTime <=0) OR ({first,business,premium,economy} <0)
 	 */
 	public Aircraft(String flightCode,int departureTime, int first, int business, int premium, int economy) throws AircraftException {
+		if((flightCode == NULL) || (departureTime <=0) || ({first,business,premium,economy} < 0))
+		{
+			throw new AircraftException("Invalid Args");
+		}
+		this.flightCode = flightCode;
+		this.departureTime = departureTime;
+		this.numFirst = first;
+		this.numBusiness = business;
+		this.numPremium = premium;
+		this.numEconomy = economy;
 		//Lots here 
 		this.status = "";
 	}
@@ -115,6 +125,8 @@ public abstract class Aircraft {
 	 * @return <code>boolean</code> true if aircraft empty; false otherwise 
 	 */
 	public boolean flightEmpty() {
+		
+		
 		
 	}
 	
