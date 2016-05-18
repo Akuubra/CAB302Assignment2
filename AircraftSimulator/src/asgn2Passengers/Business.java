@@ -20,6 +20,12 @@ public class Business extends Passenger {
 	 * @see asgnPassengers.Passenger#Passenger(int,int)
 	 */
 	public Business(int bookingTime, int departureTime) throws PassengerException {
+		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
+		{
+			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
+		}
+		super.bookingTime = bookingTime;
+		super.departureTime = departureTime;
 		//Stuff here
 		this.passID = "J:" + this.passID;
 	}
@@ -38,6 +44,10 @@ public class Business extends Passenger {
 
 	@Override
 	public Passenger upgrade() {
+		
+		Passenger BusinessPassenger = new Business();
+		copyPassengerState(BusinessPassenger);
+		return BusinessPassenger;
 	
 	}
 }

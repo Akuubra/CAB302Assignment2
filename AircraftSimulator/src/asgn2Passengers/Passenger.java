@@ -72,6 +72,10 @@ public abstract class Passenger {
 	 * OR (departureTime < bookingTime) 
 	 */
 	public Passenger(int bookingTime, int departureTime) throws PassengerException  {
+		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
+		{
+			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
+		}
 		this.bookingTime = bookingTime;
 		this.departureTime = departureTime;
 		this.newState = true;
@@ -79,17 +83,13 @@ public abstract class Passenger {
 		this.passID = "" + Passenger.index; 
 		Passenger.index++; 
 		//Stuff here 
-		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
-		{
-			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
-		}
+		
 	}
 	
 	/**
 	 * Simple no-argument constructor to support {@link #upgrade()}
 	 */
 	protected Passenger() {
-	
 		
 	}
 	
@@ -568,7 +568,7 @@ public abstract class Passenger {
 	 */
 	public boolean wasConfirmed() {
 		
-		if(this.isFlown())
+		if((this.confirmationTime > 0) || (this.confirmed))
 		{
 			return true;
 		}
@@ -586,7 +586,7 @@ public abstract class Passenger {
 	 */
 	public boolean wasQueued() {
 		
-		if(this.isFlown())
+		if((this.enterQueueTime > 0) || (this.inQueue))
 		{
 			return true;
 		}
