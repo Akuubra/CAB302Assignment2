@@ -142,7 +142,8 @@ public abstract class Passenger {
 		if(this.isConfirmed())
 		{
 			this.bookingTime = cancellationTime;
-			newState = true;
+			this.newState = true;
+			this.confirmed = false;
 		}
 		else
 		{
@@ -198,10 +199,13 @@ public abstract class Passenger {
 			this.confirmed = true;
 			this.confirmationTime = confirmationTime;
 			this.departureTime = departureTime;
+			this.newState = false;
 		}
 		else if(this.isQueued())
 		{
+			this.confirmed = true;
 			this.exitQueueTime = confirmationTime;
+			this.newState = false;
 		}
 		else
 		{
@@ -248,6 +252,7 @@ public abstract class Passenger {
 		{
 			this.flown = true;
 			this.departureTime = departureTime;
+			this.newState = false;
 		}
 		else
 		{
@@ -309,7 +314,7 @@ public abstract class Passenger {
 	 */
 	public int getExitQueueTime() {
 		
-		return this.getExitQueueTime();
+		return this.exitQueueTime;
 		
 	}
 
@@ -468,6 +473,7 @@ public abstract class Passenger {
 			this.inQueue = true;
 			this.departureTime = departureTime;
 			this.exitQueueTime = queueTime;
+			this.newState = false;
 		}
 		//Code
 	}
@@ -511,6 +517,7 @@ public abstract class Passenger {
 		if(this.isNew())
 		{
 			this.refused = true;
+			this.newState = false;
 		}
 		else if(this.isQueued())
 		{
@@ -552,7 +559,7 @@ public abstract class Passenger {
 	 * @return <code>Passenger</code> of the upgraded fare class 
 	 * @throws PassengerException 
 	 */
-	public abstract Passenger upgrade() throws PassengerException;
+	public abstract Passenger upgrade();
 
 	/**
 	 * Boolean status indicating whether passenger was ever confirmed
