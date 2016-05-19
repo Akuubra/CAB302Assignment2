@@ -20,6 +20,12 @@ public class First extends Passenger {
 	 * @see asgnPassengers.Passenger#Passenger(int,int)
 	 */
 	public First(int bookingTime, int departureTime) throws PassengerException {
+		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
+		{
+			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
+		}
+		super.bookingTime = bookingTime;
+		super.departureTime = departureTime;
 		//Call here 
 		this.passID = "F:" + this.passID;
 	}
@@ -39,6 +45,8 @@ public class First extends Passenger {
 
 	@Override
 	public Passenger upgrade() {
+		
+		return this;
 		//Think about it :) 
 	}
 }

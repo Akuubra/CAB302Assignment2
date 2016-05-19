@@ -7,15 +7,10 @@
 package asgn2Aircraft;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
-import asgn2Passengers.Business;
-import asgn2Passengers.Economy;
-import asgn2Passengers.First;
 import asgn2Passengers.Passenger;
 import asgn2Passengers.PassengerException;
-import asgn2Passengers.Premium;
 import asgn2Simulators.Log;
 
 /**
@@ -65,6 +60,16 @@ public abstract class Aircraft {
 	 * @throws AircraftException if isNull(flightCode) OR (departureTime <=0) OR ({first,business,premium,economy} <0)
 	 */
 	public Aircraft(String flightCode,int departureTime, int first, int business, int premium, int economy) throws AircraftException {
+		if((flightCode == null) || (departureTime <=0) || (first < 0) || (business < 0) || (premium < 0) || (economy < 0))
+		{
+			throw new AircraftException("Invalid Args");
+		}
+		this.flightCode = flightCode;
+		this.departureTime = departureTime;
+		this.numFirst = first;
+		this.numBusiness = business;
+		this.numPremium = premium;
+		this.numEconomy = economy;
 		//Lots here 
 		this.status = "";
 	}
@@ -80,6 +85,7 @@ public abstract class Aircraft {
 	 * @throws AircraftException if <code>Passenger</code> is not recorded in aircraft seating 
 	 */
 	public void cancelBooking(Passenger p,int cancellationTime) throws PassengerException, AircraftException {
+		
 		//Stuff here
 		this.status += Log.setPassengerMsg(p,"C","N");
 		//Stuff here
@@ -96,6 +102,7 @@ public abstract class Aircraft {
 	 * @throws AircraftException if no seats available in <code>Passenger</code> fare class. 
 	 */
 	public void confirmBooking(Passenger p,int confirmationTime) throws AircraftException, PassengerException { 
+		
 		//Stuff here
 		this.status += Log.setPassengerMsg(p,"N/Q","C");
 		//Stuff here
@@ -120,6 +127,8 @@ public abstract class Aircraft {
 	 * @return <code>boolean</code> true if aircraft empty; false otherwise 
 	 */
 	public boolean flightEmpty() {
+		
+		
 		
 	}
 	
@@ -151,6 +160,8 @@ public abstract class Aircraft {
 	 * 
 	 * @return <code>Bookings</code> object containing the status.  
 	 */
+	//IMPORTANT FOR GUI
+	//GET OBJECT BOOKING
 	public Bookings getBookings() {
 		
 	}
@@ -258,6 +269,8 @@ public abstract class Aircraft {
 	 * @param p <code>Passenger</code> to be Confirmed
 	 * @return <code>boolean</code> true if seats in Class(p); false otherwise
 	 */
+	//GIVEN PASSENGER, INFER PASSENGER CLASS/TYPE
+	//IS IT ECONOMY, PREMIUM, BUSINESS OR FIRST BASED ON ??
 	public boolean seatsAvailable(Passenger p) {		
 		
 	}

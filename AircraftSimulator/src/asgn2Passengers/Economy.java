@@ -20,6 +20,12 @@ public class Economy extends Passenger {
 	 * @see asgnPassengers.Passenger#Passenger(int,int)
 	 */
 	public Economy(int bookingTime,int departureTime) throws PassengerException {
+		if((bookingTime < 0) || (departureTime <=0) || (departureTime < bookingTime))
+		{
+			throw new PassengerException("Booking Time is out of range or Departure Time is our of range");
+		}
+		super.bookingTime = bookingTime;
+		super.departureTime = departureTime;
 		//Stuff here
 		this.passID = "Y:" + this.passID;
 	}
@@ -31,6 +37,10 @@ public class Economy extends Passenger {
 
 	@Override
 	public Passenger upgrade() {
+		
+		return this;
+		//copyPassengerState(EconomyPassenger);
+		//Passenger EconomyPassenger  = new Economy(this.bookingTime, this.departureTime);
 
 	}
 }
