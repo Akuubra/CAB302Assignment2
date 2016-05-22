@@ -86,9 +86,40 @@ public abstract class Aircraft {
 	 */
 	public void cancelBooking(Passenger p,int cancellationTime) throws PassengerException, AircraftException {
 		
+		//Exception
+		if(!p.isConfirmed())
+		{
+			throw new PassengerException("Passenger is not confirmed");
+		}
+		if(cancellationTime < 0)
+		{
+			throw new PassengerException("Cancellation Time is invalid");
+		}
+		if(this.seats.indexOf(p) == -1)
+		{
+			throw new AircraftException("Passenger does not exist on the flight");
+		}
+		//Exception
+		
 		//Stuff here
 		this.status += Log.setPassengerMsg(p,"C","N");
 		//Stuff here
+		
+		//code
+		p.cancelSeat(cancellationTime);
+		seats.remove(p);
+		switch(p.getPassID().charAt(0)){
+		case 'F':	numFirst--;
+					break;
+		case 'J':	numBusiness--;
+					break;
+		case 'P':	numPremium--;
+					break;
+		case 'Y':	numEconomy--;
+					break;
+		default:	break;
+		}
+		//code
 	}
 
 	/**
@@ -103,9 +134,25 @@ public abstract class Aircraft {
 	 */
 	public void confirmBooking(Passenger p,int confirmationTime) throws AircraftException, PassengerException { 
 		
+		//Exceptions
+		if(!(p.isConfirmed() || p.isNew())){
+			throw new PassengerException("Passenger in incorrect state");
+		}
+		if((confirmationTime < 0) || (departureTime < 0)){
+			throw new PassengerException("confirmationTime or DepartureTime is invalid");
+		}
+		if(this.getNumFirst() == this.firstCapacity || this.getNumBusiness() == this.businessCapacity || this.getnumPremium== this.premiumCapacity || this.numEconomy == this.economyCapacity){
+			throw new AircraftException("Not Enough seats in passengers far class");
+		}
+		//Exceptions
+		
 		//Stuff here
 		this.status += Log.setPassengerMsg(p,"N/Q","C");
 		//Stuff here
+		
+		//code
+		if()
+		//code
 	}
 	
 	/**
@@ -128,7 +175,12 @@ public abstract class Aircraft {
 	 */
 	public boolean flightEmpty() {
 		
-		
+		if(this.seats.isEmpty()){
+			return true;
+		}
+		else{
+			return false;
+		}
 		
 	}
 	
@@ -138,6 +190,8 @@ public abstract class Aircraft {
 	 * @return <code>boolean</code> true if aircraft full; false otherwise 
 	 */
 	public boolean flightFull() {
+		
+		if()
 		
 	}
 	
@@ -172,6 +226,7 @@ public abstract class Aircraft {
 	 * @return <code>int</code> number of Business Class passengers 
 	 */
 	public int getNumBusiness() {
+		return this.numBusiness;
 		
 	}
 	
@@ -182,6 +237,7 @@ public abstract class Aircraft {
 	 * @return <code>int</code> number of Economy Class passengers 
 	 */
 	public int getNumEconomy() {
+		return this.numEconomy;
 		
 	}
 
@@ -191,6 +247,7 @@ public abstract class Aircraft {
 	 * @return <code>int</code> number of First Class passengers 
 	 */
 	public int getNumFirst() {
+		return this.numFirst;
 		
 	}
 
@@ -200,6 +257,7 @@ public abstract class Aircraft {
 	 * @return <code>int</code> number of Confirmed passengers 
 	 */
 	public int getNumPassengers() {
+		return (this.numFirst+this.numBusiness+this.numEconomy+this.numPremium);
 		
 	}
 	
@@ -209,6 +267,7 @@ public abstract class Aircraft {
 	 * @return <code>int</code> number of Premium Economy Class passengers
 	 */
 	public int getNumPremium() {
+		return this.numPremium;
 		
 	}
 	
@@ -219,7 +278,7 @@ public abstract class Aircraft {
 	 * @return <code>List<Passenger></code> object containing the passengers.  
 	 */
 	public List<Passenger> getPassengers() {
-		
+		return this.seats;		
 	}
 	
 	/**
@@ -245,7 +304,12 @@ public abstract class Aircraft {
 	 * @return <code>boolean</code> true if isConfirmed(p); false otherwise 
 	 */
 	public boolean hasPassenger(Passenger p) {
-		
+		if(p.isConfirmed()){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 
