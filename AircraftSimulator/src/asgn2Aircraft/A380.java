@@ -31,6 +31,17 @@ public class A380 extends Aircraft {
 	 * See {@link asgn2Aircraft.Aircraft#Aircraft(String, int, int, int, int, int)}
 	 */
 	public A380(String flightCode,int departureTime) throws AircraftException {
+		if((flightCode == null) || (departureTime <=0)){
+			throw new AircraftException("Flight code or Departure Time invalid");
+		}
+		Aircraft A380 = new A380(flightCode, departureTime, FIRST, BUSINESS, PREMIUM, ECONOMY);
+		this.flightCode = flightCode;
+		this.departureTime = departureTime;
+		this.numFirst = FIRST;
+		this.numBusiness = BUSINESS;
+		this.numPremium = PREMIUM;
+		this.numEconomy = ECONOMY;
+		
 		//Call here test
 		this.type = "A380";
 	}
@@ -41,6 +52,11 @@ public class A380 extends Aircraft {
 	 * @see asgn2Aircraft.Aircraft#Aircraft(String, int, int, int, int, int) 
 	 */
 	public A380(String flightCode,int departureTime,int first, int business, int premium, int economy) throws AircraftException {
+		
+		this.numFirst = first;
+		this.numBusiness = business;
+		this.numPremium = premium;
+		this.numEconomy = economy;
 		//Call here 
 		this.type = "A380";
 	}
