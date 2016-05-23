@@ -141,7 +141,7 @@ public abstract class Aircraft {
 		if((confirmationTime < 0) || (departureTime < 0)){
 			throw new PassengerException("confirmationTime or DepartureTime is invalid");
 		}
-		if(this.getNumFirst() == this.firstCapacity || this.getNumBusiness() == this.businessCapacity || this.getnumPremium== this.premiumCapacity || this.numEconomy == this.economyCapacity){
+		if(this.getNumFirst() == this.firstCapacity || this.getNumBusiness() == this.businessCapacity || this.getNumPremium()== this.premiumCapacity || this.getNumEconomy() == this.economyCapacity){
 			throw new AircraftException("Not Enough seats in passengers far class");
 		}
 		//Exceptions
@@ -151,7 +151,7 @@ public abstract class Aircraft {
 		//Stuff here
 		
 		//code
-		if()
+		p.confirmSeat(confirmationTime, confirmationTime);
 		//code
 	}
 	
