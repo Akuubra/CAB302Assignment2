@@ -410,7 +410,33 @@ public abstract class Aircraft {
 	 */
 	public void upgradeBookings() { 
 		
-		
+		if(this.getNumFirst() < this.firstCapacity)
+		{
+			for(int i = 0; i < this.seats.size(); i++){
+				Passenger passenger = this.seats.get(0);
+				if(passenger.getPassID().charAt(0) == 'J'){
+					passenger.upgrade();
+				}
+			}
+		}
+		if(this.getNumBusiness() < this.businessCapacity)
+		{
+			for(int i = 0; i < this.seats.size(); i++){
+				Passenger passenger = this.seats.get(0);
+				if(passenger.getPassID().charAt(0) == 'P'){
+					passenger.upgrade();
+				}
+			}
+		}
+		if(this.getNumPremium() < this.premiumCapacity)
+		{
+			for(int i = 0; i < this.seats.size(); i++){
+				Passenger passenger = this.seats.get(0);
+				if(passenger.getPassID().charAt(0) == 'Y'){
+					passenger.upgrade();
+				}
+			}
+		}
 		
 	}
 
