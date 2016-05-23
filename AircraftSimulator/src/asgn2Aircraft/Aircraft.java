@@ -191,7 +191,12 @@ public abstract class Aircraft {
 	 */
 	public boolean flightFull() {
 		
-		if()
+		if((this.getNumBusiness()+this.getNumEconomy()+this.getNumPremium()+this.getNumFirst()) == this.capacity){
+			return true;
+		}
+		else{
+			return false;
+		}
 		
 	}
 	
@@ -206,6 +211,15 @@ public abstract class Aircraft {
 	 */
 	public void flyPassengers(int departureTime) throws PassengerException { 
 		
+		for (int i = 0; i < this.seats.size(); i++){
+			Passenger passenger = seats.get(i);
+			if(passenger.isConfirmed()){
+				passenger.flyPassenger(departureTime);
+			}
+			else{
+				throw new PassengerException("Passenger is in incorrect state");
+			}	
+		}
 	}
 	
 	/**
@@ -217,6 +231,8 @@ public abstract class Aircraft {
 	//IMPORTANT FOR GUI
 	//GET OBJECT BOOKING
 	public Bookings getBookings() {
+		
+		return new Bookings(this.getNumFirst(),this.getNumBusiness(),this.getNumPremium(),this.getNumEconomy(),this.seats.size(),(this.capacity-this.seats.size()));
 		
 	}
 	
@@ -335,7 +351,36 @@ public abstract class Aircraft {
 	 */
 	//GIVEN PASSENGER, INFER PASSENGER CLASS/TYPE
 	//IS IT ECONOMY, PREMIUM, BUSINESS OR FIRST BASED ON ??
-	public boolean seatsAvailable(Passenger p) {		
+	public boolean seatsAvailable(Passenger p) {
+		
+		switch(p.getPassID().charAt(0)){
+		case 'F':	if(this.getNumFirst() == this.firstCapacity){
+			return false;
+		}
+		else{
+			return true;
+		}
+		case 'J':	if(this.getNumBusiness() == this.businessCapacity){
+			return false;
+		}
+		else{
+			return true;
+		}
+		case 'P':	if(this.getNumPremium() == this.premiumCapacity){
+			return false;
+		}
+		else{
+			return true;
+		}
+		case 'Y':	if(this.getNumEconomy() == this.economyCapacity){
+			return false;
+		}
+		else{
+			return true;
+		}
+		default:	return false;
+		}
+		
 		
 	}
 
@@ -364,6 +409,8 @@ public abstract class Aircraft {
 	 * where possible to Premium.  
 	 */
 	public void upgradeBookings() { 
+		
+		
 		
 	}
 
