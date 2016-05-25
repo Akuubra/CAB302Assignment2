@@ -90,16 +90,13 @@ public abstract class Aircraft {
 	public void cancelBooking(Passenger p,int cancellationTime) throws PassengerException, AircraftException {
 		
 		//Exception
-		if(!p.isConfirmed())
-		{
+		if(!p.isConfirmed()){
 			throw new PassengerException("Passenger is not confirmed");
 		}
-		if(cancellationTime < 0)
-		{
+		if(cancellationTime < 0){
 			throw new PassengerException("Cancellation Time is invalid");
 		}
-		if(this.seats.indexOf(p) == -1)
-		{
+		if(this.seats.indexOf(p) == -1){
 			throw new AircraftException("Passenger does not exist on the flight");
 		}
 		//Exception
@@ -429,8 +426,7 @@ public abstract class Aircraft {
 	 */
 	public void upgradeBookings() { 
 		
-		if(this.getNumFirst() < this.firstCapacity)
-		{
+		if(this.getNumFirst() < this.firstCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'J'){
@@ -438,8 +434,7 @@ public abstract class Aircraft {
 				}
 			}
 		}
-		if(this.getNumBusiness() < this.businessCapacity)
-		{
+		if(this.getNumBusiness() < this.businessCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'P'){
@@ -447,8 +442,7 @@ public abstract class Aircraft {
 				}
 			}
 		}
-		if(this.getNumPremium() < this.premiumCapacity)
-		{
+		if(this.getNumPremium() < this.premiumCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'Y'){
