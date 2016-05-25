@@ -194,14 +194,7 @@ public abstract class Passenger {
 		//Exceptions
 		
 		//Code
-		if(this.isNew())
-		{
-			this.confirmed = true;
-			this.confirmationTime = confirmationTime;
-			this.departureTime = departureTime;
-			this.newState = false;
-		}
-		else if(this.isQueued())
+		if(this.isQueued())
 		{
 			this.confirmed = true;
 			this.exitQueueTime = confirmationTime;
@@ -209,8 +202,15 @@ public abstract class Passenger {
 		}
 		else
 		{
-			throw new PassengerException("Invalid transformation of state");
+			this.confirmed = true;
+			this.confirmationTime = confirmationTime;
+			this.departureTime = departureTime;
+			this.newState = false;
 		}
+		/*else
+		{
+			throw new PassengerException("Invalid transformation of state");
+		}*/
 		//Code
 	}
 

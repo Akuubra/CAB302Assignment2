@@ -7,6 +7,7 @@
 package asgn2Aircraft;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import asgn2Passengers.Passenger;
@@ -66,10 +67,12 @@ public abstract class Aircraft {
 		}
 		this.flightCode = flightCode;
 		this.departureTime = departureTime;
-		this.numFirst = first;
-		this.numBusiness = business;
-		this.numPremium = premium;
-		this.numEconomy = economy;
+		this.firstCapacity = first;
+		this.businessCapacity = business;
+		this.premiumCapacity = premium;
+		this.economyCapacity = economy;
+		this.capacity = (first+business+premium+economy);
+		seats = new ArrayList<Passenger>();
 		//Lots here 
 		this.status = "";
 	}
@@ -135,7 +138,7 @@ public abstract class Aircraft {
 	public void confirmBooking(Passenger p,int confirmationTime) throws AircraftException, PassengerException { 
 		
 		//Exceptions
-		if(!(p.isConfirmed() || p.isNew())){
+		if(p.isConfirmed()){
 			throw new PassengerException("Passenger in incorrect state");
 		}
 		if((confirmationTime < 0) || (departureTime < 0)){
@@ -151,7 +154,8 @@ public abstract class Aircraft {
 		//Stuff here
 		
 		//code
-		p.confirmSeat(confirmationTime, confirmationTime);
+		seats.add(p);
+		p.confirmSeat(confirmationTime, this.departureTime);
 		//code
 	}
 	
@@ -294,7 +298,11 @@ public abstract class Aircraft {
 	 * @return <code>List<Passenger></code> object containing the passengers.  
 	 */
 	public List<Passenger> getPassengers() {
-		return this.seats;		
+		List<Passenger> copySeats = new ArrayList<Passenger>();
+		for(int i = 0; i < this.seats.size();i++){
+			copySeats.add(this.seats.get(i));
+		}
+		return copySeats;		
 	}
 	
 	/**
