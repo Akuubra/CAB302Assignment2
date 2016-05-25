@@ -6,6 +6,7 @@
  */
 package asgn2Passengers;
 
+import asgn2Aircraft.Aircraft;
 
 /**
  * Passenger is an abstract class specifying the basic state of an airline passenger,  
@@ -134,7 +135,7 @@ public abstract class Passenger {
 		}
 		if (departureTime < cancellationTime)
 		{
-			throw new PassengerException("Departure Time is invalid");
+			throw new PassengerException("Departure Time is invalid "+departureTime+" "+cancellationTime);
 		}
 		//Exceptions
 		
@@ -198,6 +199,7 @@ public abstract class Passenger {
 		{
 			this.confirmed = true;
 			this.exitQueueTime = confirmationTime;
+			this.inQueue = false;
 			this.newState = false;
 		}
 		else
@@ -233,7 +235,7 @@ public abstract class Passenger {
 		{
 			throw new PassengerException("Passenger is refused");
 		}
-		if (this.isQueued())
+ 		if (this.isQueued())
 		{
 			throw new PassengerException("Passenger is Queued");
 		}
