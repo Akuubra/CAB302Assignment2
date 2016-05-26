@@ -7,6 +7,7 @@
 package asgn2Aircraft;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import asgn2Passengers.Passenger;
@@ -66,10 +67,12 @@ public abstract class Aircraft {
 		}
 		this.flightCode = flightCode;
 		this.departureTime = departureTime;
-		this.numFirst = first;
-		this.numBusiness = business;
-		this.numPremium = premium;
-		this.numEconomy = economy;
+		this.firstCapacity = first;
+		this.businessCapacity = business;
+		this.premiumCapacity = premium;
+		this.economyCapacity = economy;
+		this.capacity = (first+business+premium+economy);
+		seats = new ArrayList<Passenger>();
 		//Lots here 
 		this.status = "";
 	}
@@ -87,16 +90,13 @@ public abstract class Aircraft {
 	public void cancelBooking(Passenger p,int cancellationTime) throws PassengerException, AircraftException {
 		
 		//Exception
-		if(!p.isConfirmed())
-		{
+		if(!p.isConfirmed()){
 			throw new PassengerException("Passenger is not confirmed");
 		}
-		if(cancellationTime < 0)
-		{
+		if(cancellationTime < 0){
 			throw new PassengerException("Cancellation Time is invalid");
 		}
-		if(this.seats.indexOf(p) == -1)
-		{
+		if(this.seats.indexOf(p) == -1){
 			throw new AircraftException("Passenger does not exist on the flight");
 		}
 		//Exception
@@ -135,14 +135,14 @@ public abstract class Aircraft {
 	public void confirmBooking(Passenger p,int confirmationTime) throws AircraftException, PassengerException { 
 		
 		//Exceptions
-		if(!(p.isConfirmed() || p.isNew())){
+		if(p.isConfirmed()){
 			throw new PassengerException("Passenger in incorrect state");
 		}
 		if((confirmationTime < 0) || (departureTime < 0)){
 			throw new PassengerException("confirmationTime or DepartureTime is invalid");
 		}
-		if(this.getNumFirst() == this.firstCapacity || this.getNumBusiness() == this.businessCapacity || this.getNumPremium()== this.premiumCapacity || this.getNumEconomy() == this.economyCapacity){
-			throw new AircraftException("Not Enough seats in passengers far class");
+		if((this.getNumFirst() > this.firstCapacity) || (this.getNumBusiness() > this.businessCapacity) || (this.getNumPremium() > this.premiumCapacity) || (this.getNumEconomy() > this.economyCapacity)){
+//			throw new AircraftException("Not Enough seats in passengers fare class");
 		}
 		//Exceptions
 		
@@ -151,7 +151,19 @@ public abstract class Aircraft {
 		//Stuff here
 		
 		//code
-		p.confirmSeat(confirmationTime, confirmationTime);
+		seats.add(p);
+		p.confirmSeat(confirmationTime, this.departureTime);
+		switch(p.getPassID().charAt(0)){
+		case 'F':	numFirst++;
+					break;
+		case 'J':	numBusiness++;
+					break;
+		case 'P':	numPremium++;
+					break;
+		case 'Y':	numEconomy++;
+					break;
+		default:	break;
+		}
 		//code
 	}
 	
@@ -294,7 +306,11 @@ public abstract class Aircraft {
 	 * @return <code>List<Passenger></code> object containing the passengers.  
 	 */
 	public List<Passenger> getPassengers() {
-		return this.seats;		
+		List<Passenger> copySeats = new ArrayList<Passenger>();
+		for(int i = 0; i < this.seats.size();i++){
+			copySeats.add(this.seats.get(i));
+		}
+		return copySeats;		
 	}
 	
 	/**
@@ -410,8 +426,7 @@ public abstract class Aircraft {
 	 */
 	public void upgradeBookings() { 
 		
-		if(this.getNumFirst() < this.firstCapacity)
-		{
+		if(this.getNumFirst() < this.firstCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'J'){
@@ -419,8 +434,7 @@ public abstract class Aircraft {
 				}
 			}
 		}
-		if(this.getNumBusiness() < this.businessCapacity)
-		{
+		if(this.getNumBusiness() < this.businessCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'P'){
@@ -428,8 +442,7 @@ public abstract class Aircraft {
 				}
 			}
 		}
-		if(this.getNumPremium() < this.premiumCapacity)
-		{
+		if(this.getNumPremium() < this.premiumCapacity){
 			for(int i = 0; i < this.seats.size(); i++){
 				Passenger passenger = this.seats.get(0);
 				if(passenger.getPassID().charAt(0) == 'Y'){
