@@ -127,9 +127,7 @@ public abstract class Passenger {
 		if (cancellationTime < 0){
 			throw new PassengerException("Confirmations Time invalid");
 		}
-		if (departureTime < cancellationTime){
-			throw new PassengerException("Departure Time is invalid "+departureTime+" "+cancellationTime);
-		}
+		
 		//Exceptions
 		
 		//Code
@@ -137,9 +135,15 @@ public abstract class Passenger {
 			this.bookingTime = cancellationTime;
 			this.newState = true;
 			this.confirmed = false;
+			if(this.departureTime < cancellationTime){
+				this.refusePassenger(cancellationTime);
+			}
 		}
 		else{
 			throw new PassengerException("Invalid transformation of state");
+		}
+		if (this.departureTime < cancellationTime){
+			throw new PassengerException("Departure Time is invalid"+departureTime+" "+cancellationTime+this);
 		}
 		//Code
 	}
@@ -175,9 +179,7 @@ public abstract class Passenger {
 		if (confirmationTime < 0){
 			throw new PassengerException("Confirmations Time invalid");
 		}
-		if (departureTime < confirmationTime){
-			throw new PassengerException("Departure Time is invalid");
-		}
+		
 		//Exceptions
 		
 		//Code
@@ -186,12 +188,18 @@ public abstract class Passenger {
 			this.exitQueueTime = confirmationTime;
 			this.inQueue = false;
 			this.newState = false;
+			if(this.departureTime < confirmationTime){
+				this.cancelSeat(confirmationTime);
+				}
 		}
 		else{
 			this.confirmed = true;
 			this.confirmationTime = confirmationTime;
 			this.departureTime = departureTime;
 			this.newState = false;
+		}
+		if (this.departureTime < confirmationTime){
+			throw new PassengerException("Departure Time is invalid");
 		}
 		/*else
 		{
@@ -458,7 +466,7 @@ public abstract class Passenger {
 	public void refusePassenger(int refusalTime) throws PassengerException {
 		
 		if (this.isConfirmed()){
-			throw new PassengerException("Passneger is already confirmed");
+			throw new PassengerException("Passneger is already confirmed"+refusalTime+this+this.wasConfirmed());
 		}
 		if (this.isRefused()){
 			throw new PassengerException("Passenger is refused");
@@ -478,6 +486,7 @@ public abstract class Passenger {
 		}
 		else if(this.isQueued()){
 			this.exitQueueTime = refusalTime;
+			this.refused = true;
 		}
 		
 		
@@ -524,7 +533,7 @@ public abstract class Passenger {
 	 */
 	public boolean wasConfirmed() {
 		
-		if((this.confirmationTime > 0) || (this.confirmed)){
+		if((this.confirmationTime > 0)){
 			return true;
 		}
 		else{

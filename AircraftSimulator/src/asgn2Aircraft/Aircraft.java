@@ -106,6 +106,12 @@ public abstract class Aircraft {
 		//Stuff here
 		
 		//code
+		/*if(departureTime < cancellationTime){
+			
+		}
+		else{
+			p.refusePassenger(cancellationTime);
+		}*/
 		p.cancelSeat(cancellationTime);
 		seats.remove(p);
 		switch(p.getPassID().charAt(0)){
