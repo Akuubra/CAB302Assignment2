@@ -26,6 +26,7 @@ public class Business extends Passenger {
 		}
 		super.bookingTime = bookingTime;
 		super.departureTime = departureTime;
+		super.newState = true;
 		//Stuff here
 		this.passID = "J:" + this.passID;
 	}

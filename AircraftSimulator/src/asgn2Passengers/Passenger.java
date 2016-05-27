@@ -127,7 +127,9 @@ public abstract class Passenger {
 		if (cancellationTime < 0){
 			throw new PassengerException("Confirmations Time invalid");
 		}
-		
+		if (this.departureTime < cancellationTime){
+			throw new PassengerException("Departure Time is invalid"+this.departureTime+" "+cancellationTime+this);
+		}
 		//Exceptions
 		
 		//Code
@@ -135,16 +137,14 @@ public abstract class Passenger {
 			this.bookingTime = cancellationTime;
 			this.newState = true;
 			this.confirmed = false;
-			if(this.departureTime < cancellationTime){
+			/*if(this.departureTime < cancellationTime){
 				this.refusePassenger(cancellationTime);
-			}
+			}*/
 		}
 		else{
 			throw new PassengerException("Invalid transformation of state");
 		}
-		if (this.departureTime < cancellationTime){
-			throw new PassengerException("Departure Time is invalid"+departureTime+" "+cancellationTime+this);
-		}
+		
 		//Code
 	}
 
@@ -179,7 +179,9 @@ public abstract class Passenger {
 		if (confirmationTime < 0){
 			throw new PassengerException("Confirmations Time invalid");
 		}
-		
+		if (departureTime < confirmationTime){
+			throw new PassengerException("Departure Time is invalid");
+		}
 		//Exceptions
 		
 		//Code
@@ -188,23 +190,20 @@ public abstract class Passenger {
 			this.exitQueueTime = confirmationTime;
 			this.inQueue = false;
 			this.newState = false;
-			if(this.departureTime < confirmationTime){
+			/*if(this.departureTime < confirmationTime){
 				this.cancelSeat(confirmationTime);
-				}
+				}*/
 		}
-		else{
+		else if(this.isNew()){
 			this.confirmed = true;
 			this.confirmationTime = confirmationTime;
 			this.departureTime = departureTime;
 			this.newState = false;
 		}
-		if (this.departureTime < confirmationTime){
-			throw new PassengerException("Departure Time is invalid");
-		}
-		/*else
+		else
 		{
 			throw new PassengerException("Invalid transformation of state");
-		}*/
+		}
 		//Code
 	}
 
@@ -443,7 +442,7 @@ public abstract class Passenger {
 		if (this.isNew()){
 			this.inQueue = true;
 			this.departureTime = departureTime;
-			this.exitQueueTime = queueTime;
+			this.enterQueueTime = queueTime;
 			this.newState = false;
 		}
 		//Code
@@ -549,7 +548,7 @@ public abstract class Passenger {
 	 */
 	public boolean wasQueued() {
 		
-		if((this.enterQueueTime > 0) || (this.inQueue)){
+		if((this.enterQueueTime > 0)){
 			return true;
 		}
 		else{

@@ -112,18 +112,20 @@ public abstract class Aircraft {
 		else{
 			p.refusePassenger(cancellationTime);
 		}*/
-		p.cancelSeat(cancellationTime);
-		seats.remove(p);
-		switch(p.getPassID().charAt(0)){
-		case 'F':	numFirst--;
-					break;
-		case 'J':	numBusiness--;
-					break;
-		case 'P':	numPremium--;
-					break;
-		case 'Y':	numEconomy--;
-					break;
-		default:	break;
+		if(p.isConfirmed()){
+			p.cancelSeat(cancellationTime);
+			seats.remove(p);
+			switch(p.getPassID().charAt(0)){
+			case 'F':	numFirst--;
+						break;
+			case 'J':	numBusiness--;
+						break;
+			case 'P':	numPremium--;
+						break;
+			case 'Y':	numEconomy--;
+						break;
+			default:	break;
+			}
 		}
 		//code
 	}
@@ -148,7 +150,7 @@ public abstract class Aircraft {
 			throw new PassengerException("confirmationTime or DepartureTime is invalid");
 		}
 		if((this.getNumFirst() > this.firstCapacity) || (this.getNumBusiness() > this.businessCapacity) || (this.getNumPremium() > this.premiumCapacity) || (this.getNumEconomy() > this.economyCapacity)){
-//			throw new AircraftException("Not Enough seats in passengers fare class");
+			throw new AircraftException("Not Enough seats in passengers fare class");
 		}
 		//Exceptions
 		
@@ -157,8 +159,8 @@ public abstract class Aircraft {
 		//Stuff here
 		
 		//code
-		seats.add(p);
 		p.confirmSeat(confirmationTime, this.departureTime);
+		seats.add(p);
 		switch(p.getPassID().charAt(0)){
 		case 'F':	numFirst++;
 					break;

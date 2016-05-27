@@ -26,6 +26,7 @@ public class First extends Passenger {
 		}
 		super.bookingTime = bookingTime;
 		super.departureTime = departureTime;
+		super.newState = true;
 		//Call here 
 		this.passID = "F:" + this.passID;
 	}

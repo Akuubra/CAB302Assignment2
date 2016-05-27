@@ -389,7 +389,7 @@ public class Simulator {
 	public void processNewCancellations(int time) throws SimulationException, PassengerException, AircraftException {
 		//Cancellation period: correct for starting time, end of simulation 
 		int cancelPeriodStart = Math.max(time,Constants.FIRST_FLIGHT);
-		int cancelPeriodEnd = time + Constants.CANCELLATION_PERIOD;
+		int cancelPeriodEnd = time+ Constants.CANCELLATION_PERIOD;
 		cancelPeriodEnd = Math.min(Constants.DURATION,cancelPeriodEnd); 
 
 		for (int cancel=cancelPeriodStart; cancel<=cancelPeriodEnd; cancel++) {
