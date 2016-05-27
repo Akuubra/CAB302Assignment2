@@ -137,9 +137,6 @@ public abstract class Passenger {
 			this.bookingTime = cancellationTime;
 			this.newState = true;
 			this.confirmed = false;
-			/*if(this.departureTime < cancellationTime){
-				this.refusePassenger(cancellationTime);
-			}*/
 		}
 		else{
 			throw new PassengerException("Invalid transformation of state");
@@ -188,11 +185,9 @@ public abstract class Passenger {
 		if(this.isQueued()){
 			this.confirmed = true;
 			this.exitQueueTime = confirmationTime;
+			this.departureTime = departureTime;
 			this.inQueue = false;
 			this.newState = false;
-			/*if(this.departureTime < confirmationTime){
-				this.cancelSeat(confirmationTime);
-				}*/
 		}
 		else if(this.isNew()){
 			this.confirmed = true;
