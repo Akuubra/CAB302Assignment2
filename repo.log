@@ -1,0 +1,380 @@
+* h: Finished Part 1
+*   h: Merge remote-tracking branch 'origin/master'
+|\  
+| * h: updated Simulator.toString() to include maxQueueSize, cancelProb
+| * h: Restore Constants.SAVE_STATUS to false.
+| * h: Bug fix: createPassenger; final state of queue, cancelled; doc update
+* | h: Edits
+* |   h: Merge branch 'master' of https://github.com/Akuubra/CAB302Assignment2.git
+|\ \  
+| * \   h: Merge branch 'master' of https://github.com/Akuubra/CAB302Assignment2.git
+| |\ \  
+| * | | h: Passenger testing done ish
+* | | | h: Merge
+| |/ /  
+|/| |   
+* | | h: Edits
+* | | h: Added example and fixed a few logic errors
+* | | h: No error in running but not output either
+* | | h: Finished all implementation
+|/ /  
+* | h: edits
+* | h: Aircraft edit
+* | h: Finished Aircraft.java
+* | h: Completed more of Aircraft - one method left
+* | h: Completed some of aircraft
+* |   h: Merge remote-tracking branch 'WorkSpace/master'
+|\ \  
+| * | h: updated Unit test package
+| * |   h: Merge branch 'master' of https://github.com/Akuubra/CAB302Assignment2.git
+| |\ \  
+| * | | h: add testing package
+* | | |   h: Merge remote-tracking branch 'origin/master'
+|\ \ \ \  
+| |_|/ /  
+|/| | /   
+| | |/    
+| |/|     
+| * | h: Part 2 Release; asgn2Simulators package, Major javadoc update
+* | | h: Completed Aircraft Constructor
+* | | h: Completed Aircraft Constructor
+* | | h: Completed Economy Class
+* | | h: RE-commit of completed classes
+* | | h: Completed Business, Premium, First.
+* | | h: Fixed Passenger Methods
+* | | h: Completed Passenger, added notes to aircraft and economy
+* | | h: Almost completed Passenger class
+* | | h: Completed some of passsenger
+* | | h: Fixed Passenger constructor
+* | | h: Merging test
+* | |   h: Merge remote-tracking branch 'WorkSpace/master'
+|\ \ \  
+| | |/  
+| |/|   
+| * | h: testing whether it works
+* | | h: Completed isFlown()
+|/ /  
+* | h: Completed some Passenger trivial getters.
+* | h: Completed getBookingTime() test
+|/  
+* h: fix to name getNumEconomy
+* h: Fixed typo in Passenger.confirmSeat; Regenerated javadoc
+* h: javadoc: POSTs on key methods; Fix Aircraft.upgradeBookings()
+* h: Initial release of Passenger, Aircraft for studentscommit 9ad99be969569d039398de03f3663a1eb187219f
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Fri May 27 12:19:28 2016 +1000
+
+    Finished Part 1
+
+commit 3b66624a6b4957d1f49f95b4af5e700e5cff54d7
+Merge: ac5e1df 0dab636
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Fri May 27 12:08:32 2016 +1000
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ac5e1df3abfb79aff2c0d046f898926cb39c1789
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Fri May 27 12:08:01 2016 +1000
+
+    Edits
+
+commit 9b42b679b3696028a5db61cb5da7a71f6069da15
+Merge: 8bcd484 2a58138
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Fri May 27 01:49:35 2016 +1000
+
+    Merge branch 'master' of https://github.com/Akuubra/CAB302Assignment2.git
+
+commit 8bcd4843dc0495a6eac08a5aa699ac3debb6cd89
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Fri May 27 01:48:13 2016 +1000
+
+    Merge
+
+commit 2a58138c1375cd3b0195bceb5541af646adac2de
+Merge: b674d84 b28f38d
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Thu May 26 16:40:37 2016 +1000
+
+    Merge branch 'master' of
+    https://github.com/Akuubra/CAB302Assignment2.git
+    
+    passenger testing done ish
+    
+    added testing function :
+    
+    public void testCancelSeat() throws PassengerException
+    
+    public void testConfirmSeat() throws PassengerException
+    
+    public void testFlyPassenger() throws PassengerException
+    
+    public void testQueuePassenger() throws PassengerException
+    
+    public void testRefusePassenger() throws PassengerException
+    
+    public void testWasConfirmed() throws PassengerException
+    
+    public void testWasQueued() throws PassengerException
+    
+    2. added statement assertTrue(true); to getter, setter, Tostring and
+    return functions that start with "is" such as isNew..etc..
+
+commit b674d84c83710bc7ff13c476dc25ac3c96e6e215
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Thu May 26 16:38:58 2016 +1000
+
+    Passenger testing done ish
+    
+    added testing function :
+    
+    public void testCancelSeat() throws PassengerException
+    
+    public void testConfirmSeat() throws PassengerException
+    
+    public void testFlyPassenger() throws PassengerException
+    
+    public void testQueuePassenger() throws PassengerException
+    
+    public void testRefusePassenger() throws PassengerException
+    
+    public void testWasConfirmed() throws PassengerException
+    
+    public void testWasQueued() throws PassengerException
+    
+    2. added statement assertTrue(true); to getter, setter, ToString and
+    return functions that start with "is" such as isNew..etc..
+
+commit b28f38df2934d6b02711d07217e8000190dec62e
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Thu May 26 01:15:54 2016 +1000
+
+    Edits
+
+commit 43583e10fbcfa0390a8706df4de240aa466f192b
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 25 22:37:37 2016 +1000
+
+    Added example and fixed a few logic errors
+
+commit 0dab6367f87ce2767d3a712865f1fab734cfee38
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Wed May 25 21:25:58 2016 +1000
+
+    updated Simulator.toString() to include maxQueueSize, cancelProb
+
+commit 3c7400dd82475b752ad8eb4fb102cc649aef2209
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 25 13:06:19 2016 +1000
+
+    No error in running but not output either
+
+commit 9855ba0f7b48f60ee041fa04d5923f3db3fcc8aa
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 25 11:53:48 2016 +1000
+
+    Finished all implementation
+
+commit 9cf799c486bf6a9ab8fda21efd7d68191f1064a4
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Wed May 25 00:06:15 2016 +1000
+
+    Restore Constants.SAVE_STATUS to false.
+
+commit 2efdda1e53d692af74f2c0b108075746a40915d8
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Wed May 25 00:03:33 2016 +1000
+
+    Bug fix: createPassenger; final state of queue, cancelled; doc update
+
+commit febd5d6c152b3ca3e675cedfd61806d04b9cb6c0
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 23 16:50:14 2016 +1000
+
+    edits
+
+commit 615abdeeda7673b127f51782920a8e0102cfd47c
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 23 13:18:50 2016 +1000
+
+    Aircraft edit
+
+commit 1d543ad9e88b653590efdb01aa0f67c0634145a6
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 23 13:12:09 2016 +1000
+
+    Finished Aircraft.java
+
+commit 447bcb3a1246ab6c4171b5608ab095034748b72b
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 23 13:01:17 2016 +1000
+
+    Completed more of Aircraft - one method left
+
+commit a9712553c31c2d513f549a6a6f67b659e82cbcb3
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Sun May 22 16:17:33 2016 +1000
+
+    Completed some of aircraft
+
+commit c61758a514c1e39cd5b8c98890ca355b60084006
+Merge: 47547ae 696b734
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Sat May 21 19:34:43 2016 +1000
+
+    Merge remote-tracking branch 'WorkSpace/master'
+
+commit 47547ae0cd21fdf14f1f38063771ebc123a15f10
+Merge: 23c2b60 28a5b5f
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Sat May 21 19:34:17 2016 +1000
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 28a5b5f2ab7fa81822ccb3b3e992074378800455
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Fri May 20 22:35:56 2016 +1000
+
+    Part 2 Release; asgn2Simulators package, Major javadoc update
+
+commit 696b7346d532af52f1713958240101f14b01bd97
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Thu May 19 17:02:19 2016 +1000
+
+    updated Unit test package
+
+commit d287ea7b1ef3ce6c991953bf816b72d943dfb996
+Merge: 9cddf55 23c2b60
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Thu May 19 16:54:34 2016 +1000
+
+    Merge branch 'master' of
+    https://github.com/Akuubra/CAB302Assignment2.git
+
+commit 9cddf55c1e4ee83f797f5f86a10b130d8651f6b4
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Thu May 19 16:52:42 2016 +1000
+
+    add testing package
+
+commit 23c2b60c0363de6bd0ba8eef1b3ec8fabdd46560
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 19:42:22 2016 +1000
+
+    Completed Aircraft Constructor
+
+commit b047ba65c16554d01392cb18b5decc8d3f0cf4b3
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 18:03:28 2016 +1000
+
+    Completed Aircraft Constructor
+
+commit 35e99508232507c9e24d7a1fcfc01ce138cd43c1
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 17:56:54 2016 +1000
+
+    Completed Economy Class
+
+commit 3409f039d7ba519e82730c6da38a90887e9ed4f0
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 17:14:45 2016 +1000
+
+    RE-commit of completed classes
+
+commit d60394a263b1cb3926aed18bd125d7aa8e06a99e
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 17:14:27 2016 +1000
+
+    Completed Business, Premium, First.
+
+commit 03d386dcd765a28802231ae20b4e8a0f74c22556
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 16:41:29 2016 +1000
+
+    Fixed Passenger Methods
+
+commit 729dfca3a4328a96573938cf6dd2a4e590ea4d03
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 15:24:40 2016 +1000
+
+    Completed Passenger, added notes to aircraft and economy
+
+commit cf83e8103a1ac5104ab71f49c3c34db2f61e576a
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Wed May 18 12:54:31 2016 +1000
+
+    Almost completed Passenger class
+
+commit dec83fafcd95058d63245d9b73cf84b92335b0c0
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Tue May 17 22:04:48 2016 +1000
+
+    Completed some of passsenger
+
+commit 31824a407a7224ac76ded2ac8c39e7ad2900d713
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Tue May 17 19:17:38 2016 +1000
+
+    Fixed Passenger constructor
+
+commit 4e87dc13c4c10d6c4ffccb13dede6a06c48ca09b
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Tue May 17 17:44:22 2016 +1000
+
+    Merging test
+
+commit c825026dba42a11b773a1bea01f9c9a0bfb272e8
+Merge: 2baddaa fe421e7
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Tue May 17 17:43:47 2016 +1000
+
+    Merge remote-tracking branch 'WorkSpace/master'
+
+commit 2baddaaaa442e6705dd72ce033d770395ffaaf2f
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Tue May 17 17:30:17 2016 +1000
+
+    Completed isFlown()
+
+commit fe421e7af76b3f1518150c772fbff677d515c27a
+Author: Li-Fu Hsu <lifu.hsu@connect.qut.com.au>
+Date:   Mon May 16 19:34:20 2016 +1000
+
+    testing whether it works
+
+commit 4948caff4bc0ea93dc9e2bf04f04705a3a48746f
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 16 17:47:09 2016 +1000
+
+    Completed some Passenger trivial getters.
+
+commit cec981095eac03eeeacb2266c3aac37353e56151
+Author: Jack Hendy <jack.hendy@connect.qut.edu.au>
+Date:   Mon May 16 17:35:22 2016 +1000
+
+    Completed getBookingTime() test
+
+commit f0cbc8ace3f627cafe62ab0dd21e88dde328dd34
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Sun May 15 11:07:05 2016 +1000
+
+    fix to name getNumEconomy
+
+commit a54e38bf29ab90c258086e408391072120465b85
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Thu May 12 13:10:12 2016 +1000
+
+    Fixed typo in Passenger.confirmSeat; Regenerated javadoc
+
+commit 1532a031449ab4a2bab5c7cb344edeb96e75d1ec
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Thu May 12 10:35:21 2016 +1000
+
+    javadoc: POSTs on key methods; Fix Aircraft.upgradeBookings()
+
+commit d8baff101b14ee95f5b342bac4c869a09b64feea
+Author: James M. Hogan <j.hogan@qut.edu.au>
+Date:   Mon May 9 22:24:23 2016 +1000
+
+    Initial release of Passenger, Aircraft for students

@@ -23,6 +23,8 @@ public class GUISimulator extends JFrame implements Runnable {
 	 */
 	public GUISimulator(String arg0) throws HeadlessException {
 		super(arg0);
+		
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,8 +41,8 @@ public class GUISimulator extends JFrame implements Runnable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		// TODO Auto-generated method stub
 
 	}
-
 }

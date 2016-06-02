@@ -7,7 +7,7 @@
 package asgn2Simulators;
 
 import java.io.IOException;
-
+//import asgn2Simulators.GUISimulator;
 import asgn2Aircraft.AircraftException;
 import asgn2Passengers.PassengerException;
 
@@ -33,7 +33,7 @@ public class SimulationRunner {
 		try {
 			switch (args.length) {
 				case NUM_ARGS: {
-					s = createSimulatorUsingArgs(args); 
+					s = createSimulatorUsingArgs(args);
 					break;
 				}
 				case 0: {

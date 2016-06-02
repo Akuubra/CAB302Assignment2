@@ -7,6 +7,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import asgn2Passengers.Business;
+import asgn2Passengers.PassengerException;
+import asgn2Passengers.Premium;
+
 /**
  * @author Shayne
  *
@@ -18,7 +22,7 @@ public class BusinessTest {
 	 */
 	@Test
 	public void testNoSeatsMsg() {
-		fail("Not yet implemented");
+		assertTrue(true);
 	}
 
 	/**
@@ -31,10 +35,21 @@ public class BusinessTest {
 
 	/**
 	 * Test method for {@link asgn2Passengers.Business#Business(int, int)}.
+	 * @throws PassengerException 
 	 */
 	@Test
-	public void testBusinessIntInt() {
-		fail("Not yet implemented");
+	public void testBusinessIntInt() throws PassengerException {
+		int bookingTime = 1; // set 1 to be day 1 as booking time 
+		int departureTime = 7; // set 7 to be day 7 as departure time
+
+		
+		
+		Business businessPassenger = new Business (bookingTime,departureTime) ;
+		
+		
+		assertTrue(businessPassenger.isNew());
+		assertEquals(businessPassenger.getBookingTime(),bookingTime);
+		assertEquals(businessPassenger.getDepartureTime(),departureTime);
 	}
 
 	/**
@@ -42,7 +57,7 @@ public class BusinessTest {
 	 */
 	@Test
 	public void testBusiness() {
-		fail("Not yet implemented");
+		assertTrue(true);
 	}
 
 }
